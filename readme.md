@@ -1,0 +1,12 @@
+## osu!fetch
+- Install dependencies with your package manager.
+  - `npm install` or
+  - `pnpm i`
+- [Create osu! OAuth client](https://osu.ppy.sh/home/account/edit)
+- Create your `.env` file and fill in the variables seen in `.env.example`.
+- Build application:
+  - `npm run build`
+  - `pnpm build`
+- Run application:
+  - `pnpm app`
+  - `pnpm app <username>`

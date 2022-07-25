@@ -1,0 +1,33 @@
+{
+  "name": "osu-fetch",
+  "version": "1.0.0",
+  "description": "neofetch but osu!",
+  "author": {
+    "name": "Andromeda08",
+    "url": "https://github.com/andromeda08",
+    "email": "Andromeda#9731"
+  },
+  "main": "build/app.js",
+  "scripts": {
+    "build": "tsc --build",
+    "ts": "ts-node app/app.ts",
+    "app": "node build/app.js"
+  },
+  "keywords": [
+    "osu",
+    "fetch",
+    "user",
+    "profile"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "4.1.0",
+    "dotenv": "^16.0.1",
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.6.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
+  }
+}
