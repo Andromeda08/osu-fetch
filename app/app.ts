@@ -50,7 +50,7 @@ const get_stats = async (username: string, token: string) => {
     Log.res(`Got user ${user.username} ✔`);
   }
 
-  Log.req(`Fetching scores of user [${ chalk.cyan.bold(username) }]`);
+  Log.req(`Fetching scores of [${ chalk.cyan.bold(username) }]`);
   const scores: any = await fetch(
     `https://osu.ppy.sh/api/v2/users/${ user.id }/scores/best?limit=10`, {
       method: "GET",
@@ -71,7 +71,7 @@ const get_stats = async (username: string, token: string) => {
   }
 
   // Header
-  console.log(`${ chalk.gray('[ Statistics for') } ${chalk.magenta.bold(user["username"])} ${ chalk.gray(']') }`);
+  console.log(`${ chalk.gray.bold('[ Statistics for') } ${chalk.magenta.bold(user["username"])} ${ chalk.gray.bold(']') }`);
   
   // Generic statistics
   console.log(`${ chalk.red.bold('|') } ${ chalk.bold(Math.round(user["statistics"]["pp"])) }\t${ chalk.gray('pp') }`);
@@ -83,9 +83,9 @@ const get_stats = async (username: string, token: string) => {
   
   // Rank count
   const { ssh, ss, sh, s, a } = user["statistics"]["grade_counts"];
-  const total = ssh + ss + sh + s + a;
+  const total = ssh + ss + sh + s;
 
-  console.log(`${ chalk.gray('[ Grades ]') }`);
+  console.log(`${ chalk.gray.bold('[ Grades ]') }`);
 
   console.log(`${ chalk.gray.bold('||') } ${ chalk.bold(ssh) }\t${ chalk.gray('ssh') }`);
   console.log(`${ chalk.yellow.bold('||') } ${ chalk.bold(ss) }\t${ chalk.gray('ss') }`);
@@ -96,10 +96,10 @@ const get_stats = async (username: string, token: string) => {
   console.log(`${ chalk.cyan(' |')} ${ chalk.bold(total)}\t${ chalk.gray('total S+ ranks')}`);
 
   // Top 10 Plays
-  console.log(`${ chalk.gray('[ Top plays ]') }`);
+  console.log(`${ chalk.gray.bold('[ Top plays ]') }`);
 
   scores.map((e: any, i: number) => {
-    const s = () => { return `${ e["beatmapset"]["title"] } ${ chalk.gray('by') } ${ e["beatmapset"]["artist"] }\t${ chalk.cyan.bold( Math.round(e["pp"])) } ${ chalk.gray('pp') }` };
+    const s = () => { return `${e["beatmapset"]["title"]} ${chalk.gray('by')} ${e["beatmapset"]["artist"]} ${chalk.gray('[')}${chalk.magenta(e["beatmap"]["version"])}${chalk.gray(']')}\t${chalk.cyan.bold( Math.round(e["pp"]))} ${chalk.gray('pp')}` };
     switch (i) {
       case 0:
         console.log(`${ chalk.gray('[') }${ chalk.red.bold(i + 1) }${ chalk.gray(']') } ${ s() }`);
